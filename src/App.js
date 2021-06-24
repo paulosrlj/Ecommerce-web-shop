@@ -1,7 +1,12 @@
 import React from 'react';
+import Products from './components/Products/Products';
 
 function App() {
-  return <h1>Hello</h1>;
+  return (
+    <div>
+      <Products />
+    </div>
+  );
 }
 
 export default App;
