@@ -13,7 +13,7 @@ import { AddShoppingCart } from '@material-ui/icons';
 
 import useStyles from './styles';
 
-const Product = ({ product }) => {
+const Product = ({ product, onAddToCart }) => {
   const classes = useStyles();
 
   return (
@@ -32,15 +32,18 @@ const Product = ({ product }) => {
             ${product.price.formatted}
           </Typography>
         </div>
-        <Typography
+        {/* <Typography
           dangerouslySetInnerHTML={{ __html: product.description }}
           variant="body2"
           color="textSecondary"
           component="p"
-        />
+        /> */}
       </CardContent>
       <CardActions disableSpacing className={classes.cardActions}>
-        <IconButton aria-label="Add to Cart">
+        <IconButton
+          aria-label="Add to Cart"
+          onClick={() => onAddToCart(product.id, 1)}
+        >
           <AddShoppingCart />
         </IconButton>
       </CardActions>
@@ -52,6 +55,7 @@ export default Product;
 
 Product.propTypes = {
   product: PropTypes.shape({
+    id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     price: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
@@ -59,4 +63,5 @@ Product.propTypes = {
       source: PropTypes.string.isRequired,
     }),
   }).isRequired,
+  onAddToCart: PropTypes.func.isRequired,
 };
