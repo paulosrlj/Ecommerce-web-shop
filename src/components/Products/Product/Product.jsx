@@ -18,19 +18,28 @@ const Product = ({ product }) => {
 
   return (
     <Card className={classes.root}>
-      <CardMedia className={classes.media} image="" title={product.name} />
+      <CardMedia
+        className={classes.media}
+        // image={product.media.source}
+        title={product.name}
+      />
       <CardContent>
-        <div className="classes cardContent">
-          <Typography variant="h5" gutterBottom>
+        <div className={classes.cardContent}>
+          <Typography gutterBottom variant="h5" component="h2">
             {product.name}
           </Typography>
-          <Typography variant="h5">{product.price}</Typography>
+          <Typography gutterBottom variant="h5" component="h2">
+            ${product.price.formatted}
+          </Typography>
         </div>
-        <Typography variant="h2" color="tetSecondary">
-          {product.description}
-        </Typography>
+        <Typography
+          dangerouslySetInnerHTML={{ __html: product.description }}
+          variant="body2"
+          color="textSecondary"
+          component="p"
+        />
       </CardContent>
-      <CardActions disableSpacing className={classes.cardAction}>
+      <CardActions disableSpacing className={classes.cardActions}>
         <IconButton aria-label="Add to Cart">
           <AddShoppingCart />
         </IconButton>
