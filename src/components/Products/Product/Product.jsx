@@ -20,7 +20,7 @@ const Product = ({ product }) => {
     <Card className={classes.root}>
       <CardMedia
         className={classes.media}
-        // image={product.media.source}
+        image={product.media.source}
         title={product.name}
       />
       <CardContent>
@@ -55,5 +55,8 @@ Product.propTypes = {
     name: PropTypes.string.isRequired,
     price: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
+    media: PropTypes.shape({
+      source: PropTypes.string.isRequired,
+    }),
   }).isRequired,
 };

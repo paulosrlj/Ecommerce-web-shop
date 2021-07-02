@@ -1,15 +1,12 @@
+/* eslint-disable react/forbid-prop-types */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Grid } from '@material-ui/core';
 
 import Product from './Product/Product';
 import useStyles from './styles';
 
-const products = [
-  { id: 1, name: 'Shoes', description: 'Running shoes', price: '$5' },
-  { id: 2, name: 'Apple macbook', description: 'Running shoes', price: '$18' },
-];
-
-const Products = () => {
+const Products = ({ products }) => {
   const classes = useStyles();
 
   return (
@@ -27,3 +24,7 @@ const Products = () => {
 };
 
 export default Products;
+
+Products.propTypes = {
+  products: PropTypes.object.isRequired,
+};
